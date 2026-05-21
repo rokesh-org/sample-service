@@ -1,0 +1,6 @@
+[
+  {
+    "ParameterKey": "Image",
+    "ParameterValue": "506784935479.dkr.ecr.us-east-1.amazonaws.com/dev-sample-service:__TYPE__.<BUILD_TAG>"
+  }
+]
