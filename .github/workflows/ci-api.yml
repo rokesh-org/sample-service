@@ -1,0 +1,33 @@
+name: CI - Build and Push API
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'main-ui'
+      - 'FM*'
+  pull_request:
+    branches:
+      - 'main'
+      - 'main-ui'
+      - 'FM*'
+  release:
+    types: [created]
+
+jobs:
+  build-api:
+    uses: rpx/github_shared_templates/.github/workflows/ci-workflow.yaml@main
+    permissions:
+      contents: write
+      pull-requests: write
+      security-events: write
+      id-token: write
+      actions: read
+      issues: write
+    with:
+      ecr-repository: 'dev-sample-service'
+      dockerfile-path: '.'
+      image-label: 'api'
+      create-pr: true
+    secrets:
+      GIT_ACCESS_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}
